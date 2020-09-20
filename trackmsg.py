@@ -90,12 +90,8 @@ for line in f:
             message_ids = id_regex.findall(line)
 
             if message_ids:
-
                 message_id = message_ids[0].lstrip()
-
-
                 message_id_regex = re.compile(".* " + message_id + "[:,] .*")
-
                 if not message_id_regex in search_tokens:
                     if args.server or (args.sender and not client_regex.match(line)) or (
                             (args.recipient or args.relay_host) and (
@@ -127,14 +123,11 @@ for line in f:
 
 
                 client = client_regex.findall(line)
-
-
                 if client:
                     messages_dict[message_id]['server'] = wrap_always(client[0], 14)
 
 
                 sender = from_regex.findall(line)
-
                 if sender:
                     messages_dict[message_id]['sender'] = cap(sender[0], 28)
 
